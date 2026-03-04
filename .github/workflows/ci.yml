@@ -7,8 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build-test-docker:
-    runs-on: ubuntu-latest
+ build-test-docker:
+  runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
