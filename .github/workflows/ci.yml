@@ -24,9 +24,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install flask requests
 
-      - name: Start Flask app in background
+      - name: Install dependencies
         run: |
-          nohup python app.py & sleep 10
+          python -m pip install --upgrade pip
+          pip install flask pytest
+
+     - name: Run tests
+       run: |
+         pytest
 
       - name: Test /health endpoint
         run: |
