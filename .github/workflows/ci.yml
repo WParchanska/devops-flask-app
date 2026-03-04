@@ -7,10 +7,10 @@ on:
     branches: [ main ]
 
 jobs:
- build-test-docker:
-  runs-on: ubuntu-latest
+  build-test-docker:
+    runs-on: ubuntu-latest
 
- steps:
+    steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
@@ -22,17 +22,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flask requests
+          pip install flask requests pytest
 
-      - name: Install dependencies
+      - name: Run tests
         run: |
-
-          python -m pip install --upgrade pip
-          pip install flask pytest
-
-     - name: Run tests
-       run: |
-         pytest
+          pytest
 
       - name: Test /health endpoint
         run: |
