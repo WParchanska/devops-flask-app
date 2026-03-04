@@ -35,7 +35,7 @@ jobs:
 
       - name: Test /health endpoint
         run: |
-          python -c "import requests; response = requests.get('http://127.0.0.1:5000/health'); assert response.status_code == 200"
+          python -c "import requests; response = requests.get('http://127.0.0.1:5001/health'); assert response.status_code == 200"
 
       - name: Build Docker image
         run: |
