@@ -37,6 +37,14 @@ jobs:
         run: |
           python -c "import requests; response = requests.get('http://127.0.0.1:5001/health'); assert response.status_code == 200"
 
+      - name: Log in to Docker Hub
+        run: |
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
       - name: Build Docker image
         run: |
-          docker build -t devops-flask-app .
+          docker build -t wupe7/desvops-flask-app:latest .
+
+      - name: Push Docker image
+        run: |
+          docker push wupe7/desvops-flask-app:latest
