@@ -1,51 +1,61 @@
-# DevOps Flask App
+DevOps Flask App
+Simple Flask application demonstrating a complete DevOps workflow using Docker, CI/CD, and cloud deployment.
 
-## Opis projektu
-Jest to prosty projekt Flask przygotowany do celów **DevOps i CI/CD**.  
-Zawiera endpoint `/health` oraz przykładowe testy uruchamiane w **GitHub Actions**.  
-Projekt pokazuje jak:
+Tech Stack
+Python (Flask)
+Docker
+GitHub Actions (CI/CD)
+Docker Hub
+AWS EC2
 
-- Budować i testować aplikację Python/Flask
-- Uruchamiać CI/CD workflow w GitHub Actions
-- Budować obraz Dockerowy dla aplikacji
+Features
+REST API built with Flask
+Health check endpoint /health
+Dockerized application
+Automated CI/CD pipeline
+Docker image pushed to Docker Hub
+Ready for cloud deployment
 
----
+Example Response
+/health
 
-## Endpoints
+{
+  "status": "OK"
+}
 
-- `/` – zwraca komunikat powitalny, timestamp i hostname  
-- `/health` – zwraca status `"OK"`  
+Run with Docker
+docker run -d -p 5001:5001 wupe7/desvops-flask-app:latest
 
----
+Test: 
+curl http://127.0.0.1:5001/health
 
-## Uruchamianie lokalnie
+Run with Docker Compose
+docker-compose up -d
 
-```bash
-# instalacja zależności
-python -m pip install --upgrade pip
-pip install flask requests pytest
+CI/CD Pipeline
+The project uses GitHub Actions to automate:
+Installing dependencies
+Running tests (pytest)
+Testing /health endpoint
+Building Docker image
+Pushing image to Docker Hub
+Pipeline runs on every push to main.
 
-# uruchomienie aplikacji
-python app.py
+Deployment (AWS EC2)
+Application was deployed on AWS EC2 instance:
+Docker installed on EC2
+Image pulled from Docker Hub
+Container started and tested locally on server
 
-Aplikacja działa domyślnie na http://127.0.0.1:5001
+What I Learned
+Building and testing Flask applications
+Writing CI/CD pipelines with GitHub Actions
+Working with Docker images and containers
+Managing secrets (GitHub + Docker Hub tokens)
+Basic cloud deployment on AWS EC2
 
-#Testy
+Docker Hub
+docker pull wupe7/desvops-flask-app:latest
 
-Test /health można uruchomić lokalnie przez pytest:
-pytest
-
-#Docker
-
-Budowa obrazu Dockerowego:
-docker build -t devops-flask-app .
-docker run -p 5000:5000 devops-flask-app
-
-#CI/CD
-
-Workflow GitHub Actions wykonuje:
-1.Instalację Pythona i dependencies
-2.Uruchomienie Flask w tle
-3.Testy /health i pytest
-4.Budowę obrazu Dockerowego
-5.Workflow odpala się automatycznie przy push i pull request do gałęzi main.
+Project Purpose
+This project was created as a hands-on DevOps practice project to demonstrate real-world workflow skills for junior DevOps roles.
